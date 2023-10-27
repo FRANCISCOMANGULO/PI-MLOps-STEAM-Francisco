@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from typing import Union
 from casas import top_desarrolladores_recomendados
-from casas import userdata
+#from casas import userdata
 #from casas import UserForGenre
 from casas import developer
 from casas import developer_reviews_analysis
@@ -20,13 +20,13 @@ async def get_top_desarrolladores(year: int):
     return {f"top_desarrolladore 1" : top_desarrolladores[0], "top_desarrollador 2" : top_desarrolladores[1], "top_desarrollador 3" : top_desarrolladores[2]}
 
 
-@app.get("/userdata/{user_id}")
+'''@app.get("/userdata/{user_id}")
 async def get_userdata(user_id: Union[int, str]):
     # Obtener los datos del usuario
     user_data = userdata(user_id)
 
     # Devolver el resultado
-    return user_data
+    return user_data'''
 
 '''@app.get("/UserForGenre/{genero}")
 async def get_UserForGenre(genero: str):
