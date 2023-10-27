@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from typing import Union
 from casas import top_desarrolladores_recomendados
 from casas import userdata
-from casas import UserForGenre
+#from casas import UserForGenre
 from casas import developer
 from casas import developer_reviews_analysis
 from typing import List, Dict, Tuple, Sequence, Any, Union, Optional, Callable 
@@ -28,13 +28,13 @@ async def get_userdata(user_id: Union[int, str]):
     # Devolver el resultado
     return user_data
 
-@app.get("/UserForGenre/{genero}")
+'''@app.get("/UserForGenre/{genero}")
 async def get_UserForGenre(genero: str):
     # Obtener los datos del usuario
     user_data = UserForGenre(genero)
 
     # Devolver el resultado
-    return user_data
+    return user_data'''
 
 
 @app.get("/developer/{developer_name}")

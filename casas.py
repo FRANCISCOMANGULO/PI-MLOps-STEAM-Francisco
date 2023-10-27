@@ -35,9 +35,42 @@ def top_desarrolladores_recomendados(year):
     # Devolver el top 3 de desarrolladores
     return top_desarrolladores
 
-
-
 def userdata(user_id):
+    # Leer los DataFrames necesarios
+    merged_df5 = pd.read_parquet('User_data.parquet', columns=['User_Id', 'Price', 'Recommend'])
+    df9 = pd.read_parquet('User_items_reducido_32.parquet', columns=['User_Id'])
+
+    if type(user_id) == int:
+        user_id = str(user_id)
+
+    if not user_id in merged_df5['User_Id'].values or not user_id in df9['User_Id'].values:
+        return f"El user_id {user_id} no existe en la base de datos u.u."
+
+    # Filtrar los DataFrames por user_id
+    user_data = merged_df5[merged_df5['User_Id'] == user_id]
+    user_items = df9[df9['User_Id'] == user_id]
+
+    # Calcular la cantidad de dinero gastado por el usuario
+    dinero_gastado = np.dot(user_data['Price'], user_data['Recommend'])
+
+    # Calcular el porcentaje de recomendación en base a reviews.recommend
+    recomendacion = user_data['Recommend'].sum()
+    porcentaje_recomendacion = recomendacion / user_data.shape[0] * 100
+
+    # Calcular la cantidad de items
+    cantidad_de_items = user_items.shape[0]
+
+    # Crear un diccionario con los resultados
+    resultados = {
+        'Cantidad de dinero gastado': dinero_gastado,
+        'Porcentaje de recomendación': porcentaje_recomendacion,
+        'Cantidad de items': cantidad_de_items
+    }
+    del merged_df5, df9, user_data, user_items
+    gc.collect()
+    return resultados
+
+'''def userdata(user_id):
     
     if type(user_id) == int:
         user_id = str(user_id)
@@ -68,12 +101,12 @@ def userdata(user_id):
     }
     del user_data, user_items
     gc.collect()
-    return resultados
+    return resultados'''
 
 
 
 
-def UserForGenre(genero):
+'''def UserForGenre(genero):
     if not genero in df_nuevo.columns:
         return f"El género {genero} no existe en la base de datos."
     
@@ -94,7 +127,7 @@ def UserForGenre(genero):
         Horas_por_año[clave_formateada] = valor_formateado
     del df_genre, filtro_usur, horas_jugXaño
     gc.collect()
-    return {"Usuario con más horas jugadas": usur_mas_horas, "Horas jugadas por año": Horas_por_año}
+    return {"Usuario con más horas jugadas": usur_mas_horas, "Horas jugadas por año": Horas_por_año}'''
 
 
 
