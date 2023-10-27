@@ -3,8 +3,8 @@ from typing import Union
 from casas import top_desarrolladores_recomendados
 #from casas import userdata
 #from casas import UserForGenre
-from casas import developer
-from casas import developer_reviews_analysis
+#from casas import developer
+#from casas import developer_reviews_analysis
 from typing import List, Dict, Tuple, Sequence, Any, Union, Optional, Callable 
 from fastapi.responses import JSONResponse
 import pandas as pd
@@ -37,18 +37,18 @@ async def get_UserForGenre(genero: str):
     return user_data'''
 
 
-@app.get("/developer/{developer_name}")
+'''@app.get("/developer/{developer_name}")
 async def get_developer_data(developer_name: str):
     # Obtener los datos del desarrollador
     developer_data = developer(developer_name)
 
     # Devolver el resultado como respuesta JSON
-    return JSONResponse(developer_data.to_dict(orient="records"))
+    return JSONResponse(developer_data.to_dict(orient="records"))'''
 
-@app.get("/developer_reviews_analysis/{developer_name}")
+'''@app.get("/developer_reviews_analysis/{developer_name}")
 async def get_developer_reviews_analysis(developer_name: str):
     # Obtener los datos del desarrollador
     developer_data = developer_reviews_analysis(developer_name)
 
     # Devolver el resultado como respuesta JSON
-    return developer_data
+    return developer_data'''
