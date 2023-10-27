@@ -35,7 +35,7 @@ def top_desarrolladores_recomendados(year):
     # Devolver el top 3 de desarrolladores
     return top_desarrolladores
 
-def userdata(user_id):
+'''def userdata(user_id):
     # Leer los DataFrames necesarios
     merged_df5 = pd.read_parquet('User_data.parquet', columns=['User_Id', 'Price', 'Recommend'])
     df9 = pd.read_parquet('User_items_reducido_32.parquet', columns=['User_Id'])
@@ -68,7 +68,7 @@ def userdata(user_id):
     }
     del merged_df5, df9, user_data, user_items
     gc.collect()
-    return resultados
+    return resultados'''
 
 '''def userdata(user_id):
     
