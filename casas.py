@@ -13,9 +13,10 @@ merged_df = pd.read_parquet('Top 3 Desarrolladores.parquet')
 #merged_df5 = pd.read_parquet('User_Data.parquet')
 #merged_df10 = pd.merge(df8, df9, on='Item_Id')
 #df_nuevo = merged_df10.drop(columns=['Item_Id','App_name','Price','Developer','Items_Count','Item_Name'])
-#df_f1 = df8[["Item_Id", "Price","Developer","Release_year"]]
+df_f1 = df8[["Item_Id", "Price","Developer","Release_year"]]
 #df_merged123 = pd.merge(df8, df7, on='Item_Id') 
 #df_limpio = df_merged123[['User_Id', 'Item_Id','Developer','Release_year','Sentiment Analysis']]
+#df_limpio = pd.read_parquet('Developer Analysis.parquet')
 
 
 def top_desarrolladores_recomendados(year):
@@ -162,6 +163,7 @@ def developer(developer_name: str):
 
 
 def developer_reviews_analysis(desarrolladora:str):
+    df_limpio = pd.read_parquet('Developer Analysis.parquet')
     
     # Se filtran las columnas a utilizar y se eliminan duplicados
     df_merged = df_limpio[['User_Id', 'Item_Id','Developer','Release_year','Sentiment Analysis']]
