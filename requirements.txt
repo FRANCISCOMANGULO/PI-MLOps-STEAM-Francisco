@@ -1,4 +1,4 @@
 fastapi
-pandas
+pandas==0.24.2
 uvicorn
-pyarrow
+pyarrow==0.15.1
