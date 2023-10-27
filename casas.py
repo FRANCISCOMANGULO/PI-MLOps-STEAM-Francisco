@@ -3,6 +3,7 @@ import numpy as np    # Para operaciones matemáticas
 import os   # Para manejo de archivos
 import datetime as dt   # Para manejo de fechas
 import json   # Para manejo de archivos json
+import gc   # Para garbage collector
 
 
 df7 = pd.read_parquet('User_reviews_reducido_32.parquet')
@@ -30,6 +31,7 @@ def top_desarrolladores_recomendados(year):
     # Ordenar los resultados por número de juegos recomendados y devolver los tres primeros desarrolladores
     top_desarrolladores = df_count.sort_values('App_name', ascending=False).head(3)['Developer'].tolist()
     del df_count, df_year
+    gc.collect()
     # Devolver el top 3 de desarrolladores
     return top_desarrolladores
 
@@ -65,6 +67,7 @@ def userdata(user_id):
         'Cantidad de items': cantidad_de_items
     }
     del user_data, user_items
+    gc.collect()
     return resultados
 
 
@@ -90,6 +93,7 @@ def UserForGenre(genero):
         valor_formateado = int(valor)
         Horas_por_año[clave_formateada] = valor_formateado
     del df_genre, filtro_usur, horas_jugXaño
+    gc.collect()
     return {"Usuario con más horas jugadas": usur_mas_horas, "Horas jugadas por año": Horas_por_año}
 
 
@@ -120,6 +124,7 @@ def developer(developer_name: str):
 
     table = table.reset_index()
     del developer_data, games_per_year, free_games, free_games_per_year, free_percentage_per_year
+    gc.collect()
     return table
 
 
@@ -141,5 +146,6 @@ def developer_reviews_analysis(desarrolladora:str):
     # Se crea un diccionario con el resumen de las reviews
     dicc = {desarrolladora : resumen_reviews}
     del df_merged, positive_reviews, negative_reviews, resumen_reviews
+    gc.collect()
     # Se devuelve un diccionario con los resultados obtenidos
     return dicc
