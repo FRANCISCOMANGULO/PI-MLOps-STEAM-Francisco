@@ -10,7 +10,7 @@ df7 = pd.read_parquet('User_reviews_reducido_32.parquet')
 df8 = pd.read_parquet('Output_steam_games_reducido_32.parquet')
 #df9 = pd.read_parquet('User_items_reducido_32.parquet')
 merged_df = pd.read_parquet('Top 3 Desarrolladores.parquet')
-merged_df5 = pd.read_parquet('User_data.parquet')
+merged_df5 = pd.read_parquet('User_Data.parquet')
 #merged_df10 = pd.merge(df8, df9, on='Item_Id')
 #df_nuevo = merged_df10.drop(columns=['Item_Id','App_name','Price','Developer','Items_Count','Item_Name'])
 df_f1 = df8[["Item_Id", "Price","Developer","Release_year"]]
